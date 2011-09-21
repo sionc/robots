@@ -1,5 +1,8 @@
 Robots::Application.routes.draw do
-  devise_for :users
+  devise_for :users, :path_names => { :sign_up => "register", :sign_in => 'login',
+                                      :sign_out => 'logout', :password => 'secret',
+                                      :confirmation => 'verification', :unlock => 'unblock',
+                                      :registration => 'register' }
 
   resources :robots
  # resources :sessions,   :only => [:new, :create, :destroy]

@@ -1,4 +1,6 @@
 class RobotsController < ApplicationController
+  before_filter :authenticate_user!, :except => [:show, :index]
+
   # GET /robots
   # GET /robots.xml
   def index
