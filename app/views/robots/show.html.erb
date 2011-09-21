@@ -1,0 +1,48 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @robot.name %>
+</p>
+
+<p>
+  <b>Model:</b>
+  <%= @robot.model %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @robot.description %>
+</p>
+
+<p>
+  <b>Hardware:</b>
+  <%= @robot.hardware %>
+</p>
+
+<p>
+  <b>Software:</b>
+  <%= @robot.software %>
+</p>
+
+<p>
+  <b>Applications:</b>
+  <%= @robot.applications %>
+</p>
+
+
+<%= link_to 'Edit', edit_robot_path(@robot) %> |
+<%= link_to 'Back', robots_path %> <br />
+
+<br />
+<br />
+
+<p>Say something...</p>
+<%=render 'microposts/micropost_form'%>
+
+<% unless @robot.microposts.empty? %>
+        <table class="microposts" summary="Robot microposts">
+          <%= render @microposts %>
+        </table>
+        <%= will_paginate @microposts %>
+<% end %>

@@ -1,4 +1,12 @@
 Robots::Application.routes.draw do
+  devise_for :users
+
+  resources :robots
+ # resources :sessions,   :only => [:new, :create, :destroy]
+  resources :microposts, :only => [:create, :destroy]
+
+  root :to => "robots#index"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
