@@ -1,0 +1,23 @@
+<p>
+  <b>Name:</b>
+  <%= @user.name %>
+</p>
+
+<table>
+<% @robots.each do |robot| %>
+  <tr>
+    <td><%= robot.name %></td>
+    <td><%= robot.model %></td>
+    <td><%= robot.description %></td>
+    <td><%= robot.hardware %></td>
+    <td><%= robot.software %></td>
+    <td><%= robot.applications %></td>
+    <td><%= robot.user.id %></td>
+    <td><%= link_to 'Show', robot %></td>
+    <td><%= link_to 'Edit', edit_robot_path(robot) %></td>
+    <td><%= link_to 'Destroy', robot, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<%= link_to 'New Robot', new_robot_path %>

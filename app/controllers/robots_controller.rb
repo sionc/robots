@@ -1,5 +1,5 @@
 class RobotsController < ApplicationController
-  before_filter :authenticate_user!, :except => [:show, :index]
+  before_filter :authenticate_user!, :except => []
 
   # GET /robots
   # GET /robots.xml
@@ -30,7 +30,6 @@ class RobotsController < ApplicationController
   # GET /robots/new.xml
   def new
     @robot = Robot.new
-
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @robot }
@@ -49,6 +48,7 @@ class RobotsController < ApplicationController
 
     respond_to do |format|
       if @robot.save
+        @robot.update_attribute(:user_id, current_user.id)
         format.html { redirect_to(@robot, :notice => 'Robot was successfully created.') }
         format.xml  { render :xml => @robot, :status => :created, :location => @robot }
       else
@@ -81,7 +81,7 @@ class RobotsController < ApplicationController
     @robot.destroy
 
     respond_to do |format|
-      format.html { redirect_to(robots_url) }
+      format.html { redirect_to(root_url) }
       format.xml  { head :ok }
     end
   end

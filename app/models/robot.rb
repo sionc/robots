@@ -1,6 +1,8 @@
 class Robot < ActiveRecord::Base
 
-  has_many :microposts
+  attr_accessible :name, :model, :description, :hardware, :software, :applications
+
   has_many :microposts, :dependent => :destroy
+  belongs_to :user
 
 end
