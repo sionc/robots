@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110923103735) do
+ActiveRecord::Schema.define(:version => 20110924071028) do
 
   create_table "microposts", :force => true do |t|
     t.string   "content"
@@ -20,6 +20,17 @@ ActiveRecord::Schema.define(:version => 20110923103735) do
   end
 
   add_index "microposts", ["robot_id", "created_at"], :name => "index_microposts_on_robot_id_and_created_at"
+
+  create_table "relationships", :force => true do |t|
+    t.integer  "tracker_id"
+    t.integer  "trackee_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "relationships", ["trackee_id"], :name => "index_relationships_on_trackee_id"
+  add_index "relationships", ["tracker_id", "trackee_id"], :name => "index_relationships_on_tracker_id_and_trackee_id", :unique => true
+  add_index "relationships", ["tracker_id"], :name => "index_relationships_on_tracker_id"
 
   create_table "robots", :force => true do |t|
     t.string   "name"

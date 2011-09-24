@@ -9,4 +9,21 @@ class User < ActiveRecord::Base
 
   has_many :robots, :dependent => :destroy
 
+  has_many :relationships, :foreign_key => "tracker_id",
+                           :dependent => :destroy
+
+  has_many :tracking, :through => :relationships, :source => :trackee
+
+  def tracking?(trackee)
+    relationships.find_by_trackee_id(trackee)
+  end
+
+  def track!(trackee)
+    relationships.create!(:trackee_id => trackee.id)
+  end
+
+  def untrack!(trackee)
+    relationships.find_by_trackee_id(trackee).destroy
+  end
+
 end

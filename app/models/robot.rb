@@ -5,4 +5,10 @@ class Robot < ActiveRecord::Base
   has_many :microposts, :dependent => :destroy
   belongs_to :user
 
+  has_many :reverse_relationships, :foreign_key => "trackee_id",
+                                   :class_name => "Relationship",
+                                   :dependent => :destroy
+
+  has_many :trackers, :through => :reverse_relationships
+
 end

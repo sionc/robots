@@ -1,0 +1,5 @@
+<%= form_for current_user.relationships.
+                          build(:trackee_id => @robot.id),:remote => true do |f| %>
+  <div><%= f.hidden_field :trackee_id %></div>
+  <div class="actions"><%= f.submit "Track" %></div>
+<% end %>

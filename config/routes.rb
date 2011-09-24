@@ -4,7 +4,14 @@ Robots::Application.routes.draw do
                                       :confirmation => 'verification', :unlock => 'unblock',
                                       :registration => 'register' }
 
-  resources :robots
+  resources :robots do
+    member do
+      get :trackers
+    end
+  end
+
+  resources :relationships, :only => [:create, :destroy]
+
  # resources :sessions,   :only => [:new, :create, :destroy]
   resources :microposts, :only => [:create, :destroy]
 

@@ -56,6 +56,8 @@ class RobotsController < ApplicationController
         format.xml  { render :xml => @robot.errors, :status => :unprocessable_entity }
       end
     end
+
+
   end
 
   # PUT /robots/1
@@ -86,3 +88,4 @@ class RobotsController < ApplicationController
     end
   end
 end
+

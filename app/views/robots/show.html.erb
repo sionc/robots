@@ -1,3 +1,5 @@
+<%= render 'track_form' if signed_in? %>
+
 <p>
   <b>Name:</b>
   <%= @robot.name %>
@@ -27,7 +29,6 @@
   <b>Applications:</b>
   <%= @robot.applications %>
 </p>
-
 
 <%= link_to 'Edit', edit_robot_path(@robot) %> |
 <%= link_to 'Back', root_path %> <br />
