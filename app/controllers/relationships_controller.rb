@@ -5,7 +5,7 @@ class RelationshipsController < ApplicationController
     @robot = Robot.find(params[:relationship][:trackee_id])
     current_user.track!(@robot)
     respond_to do |format|
-#      format.html {redirect_to @robot}
+      format.html {redirect_to @robot}
       format.js
     end
   end
@@ -14,7 +14,7 @@ class RelationshipsController < ApplicationController
     @robot = Relationship.find(params[:id]).trackee
     current_user.untrack!(@robot)
     respond_to do |format|
-#      format.html {redirect_to @robot}
+      format.html {redirect_to @robot}
       format.js
     end
   end

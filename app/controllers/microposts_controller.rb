@@ -4,9 +4,9 @@ class MicropostsController < ApplicationController
     @robot =  Robot.find(session[:current_robot_id])
     @micropost  = @robot.microposts.build(params[:micropost])
     if @micropost.save
-      flash[:success] = "Micropost created!"
+      flash[:success] = "Robot status updated!"
     else
-      flash[:success] = "Micropost could not be created!"
+      flash[:success] = "Robot status could could not be updated!"
     end
     redirect_to @robot
   end

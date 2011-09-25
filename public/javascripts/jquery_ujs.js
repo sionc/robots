@@ -44,7 +44,7 @@
  */
 
 (function($, undefined) {
-  // Shorthand to make it a little easier to call public rails functions from within jquery_ujs.js
+  // Shorthand to make it a little easier to call public rails functions from within rails.js
   var rails;
 
   $.rails = rails = {

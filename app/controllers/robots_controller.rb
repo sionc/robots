@@ -1,5 +1,5 @@
 class RobotsController < ApplicationController
-  before_filter :authenticate_user!, :except => []
+  before_filter :authenticate_user!, :except => [:show, :index]
 
   # GET /robots
   # GET /robots.xml
@@ -56,8 +56,6 @@ class RobotsController < ApplicationController
         format.xml  { render :xml => @robot.errors, :status => :unprocessable_entity }
       end
     end
-
-
   end
 
   # PUT /robots/1

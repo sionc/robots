@@ -1,6 +1,8 @@
 class Robot < ActiveRecord::Base
 
-  attr_accessible :name, :model, :description, :hardware, :software, :applications
+  attr_accessible :user_id, :name, :model, :description, :hardware, :software, :applications
+
+  validates :name, :presence => true, :length => { :maximum => 50 }
 
   has_many :microposts, :dependent => :destroy
   belongs_to :user
