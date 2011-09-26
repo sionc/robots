@@ -1,3 +1,6 @@
+# This class was adapted from the example in Ruby on Rails Tutorial by Michael Hartl which
+# can be found at http://ruby.railstutorial.org/ruby-on-rails-tutorial-book.
+
 class RelationshipsController < ApplicationController
   before_filter :authenticate_user!
 

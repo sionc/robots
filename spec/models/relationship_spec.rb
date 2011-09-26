@@ -1,3 +1,6 @@
+# This class was adapted from the example in Ruby on Rails Tutorial by Michael Hartl which
+# can be found at http://ruby.railstutorial.org/ruby-on-rails-tutorial-book.
+
 require 'spec_helper'
 
 describe Relationship do
@@ -18,19 +21,19 @@ describe Relationship do
       @relationship.save
     end
 
-    it "should have a follower attribute" do
+    it "should have a tracker" do
       @relationship.should respond_to(:tracker)
     end
 
-    it "should have the right follower" do
+    it "should have the right tracker" do
       @relationship.tracker.should == @tracker
     end
 
-    it "should have a followed attribute" do
+    it "should have a trackee" do
       @relationship.should respond_to(:trackee)
     end
 
-    it "should have the right followed user" do
+    it "should have the right tracker" do
       @relationship.trackee.should == @trackee
     end
   end

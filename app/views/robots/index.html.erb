@@ -1,13 +1,12 @@
-<h1>Listing robots</h1>
-
 <table>
   <tr>
+    <td>
+      <h3>All Robots</h3>
+    </td>
+  </tr>
+  <tr>
     <th>Name</th>
-    <th>Model</th>
-    <th>Description</th>
-    <th>Hardware</th>
-    <th>Software</th>
-    <th>Applications</th>
+    <th>Owner</th>
     <th></th>
     <th></th>
     <th></th>
@@ -16,18 +15,12 @@
 <% @robots.each do |robot| %>
   <tr>
     <td><%= robot.name %></td>
-    <td><%= robot.model %></td>
-    <td><%= robot.description %></td>
-    <td><%= robot.hardware %></td>
-    <td><%= robot.software %></td>
-    <td><%= robot.applications %></td>
-    <td><%= link_to 'Show', robot %></td>
-    <td><%= link_to 'Edit', edit_robot_path(robot) %></td>
-    <td><%= link_to 'Destroy', robot, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
+    <td><%= robot.user.email %></td>
+    <td><%= link_to 'View page', robot %> |
+    <% if current_user == robot.user%>
+      <%= link_to 'Edit', edit_robot_path(robot) %> |
+      <%= link_to 'Delete', robot, :confirm => 'Are you sure?', :method => :delete %></td>
+    <% end %>
+    </tr>
 <% end %>
 </table>
-
-<br />
-
-<%= link_to 'New Robot', new_robot_path %>

@@ -17,6 +17,10 @@ class User < ActiveRecord::Base
 
   has_many :tracking, :through => :relationships, :source => :trackee
 
+  # The following lines of code were adapted from the example in Ruby on Rails Tutorial
+  # by Michael Hartl which can be found at
+  # http://ruby.railstutorial.org/ruby-on-rails-tutorial-book.
+
   def tracking?(trackee)
     relationships.find_by_trackee_id(trackee)
   end

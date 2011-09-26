@@ -1,23 +1,45 @@
-<p>
-  <b>Name:</b>
-  <%= @user.name %>
-</p>
-
 <table>
-<% @robots.each do |robot| %>
+  <tr>
+    <td>
+      <h3>My Robots</h3>
+    </td>
+  </tr>
+  <% @robots.each do |robot| %>
   <tr>
     <td><%= robot.name %></td>
-    <td><%= robot.model %></td>
-    <td><%= robot.description %></td>
-    <td><%= robot.hardware %></td>
-    <td><%= robot.software %></td>
-    <td><%= robot.applications %></td>
-    <td><%= robot.user.id %></td>
-    <td><%= link_to 'Show', robot %></td>
-    <td><%= link_to 'Edit', edit_robot_path(robot) %></td>
-    <td><%= link_to 'Destroy', robot, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td>
+      <%= link_to 'View page', robot %> |
+      <%= link_to 'Edit', edit_robot_path(robot) %> |
+      <%= link_to 'Delete', robot, :confirm => 'Are you sure?', :method => :delete %>
+    </td>
   </tr>
-<% end %>
+  <% end %>
+  <tr>
+    <td>
+    <%= link_to 'New Robot', new_robot_path %>
+    </td>
+  </tr>
 </table>
 
-<%= link_to 'New Robot', new_robot_path %>
+<br />
+<br />
+
+<% if @relationships.count > 0 %>
+  <table>
+    <tr>
+      <td>
+        <h3>Robots I'm tracking</h3>
+      </td>
+    </tr>
+    <% @relationships.each do |relationship| %>
+    <tr>
+      <td><%= relationship.trackee.name %>
+      (owned by <i><%= relationship.trackee.user.email %></i>)</td>
+      <td><%= link_to 'View page', relationship.trackee %></td>
+    </tr>
+    <% end %>
+</table>
+<% end %>
+
+
+

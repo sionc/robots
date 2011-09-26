@@ -1,47 +1,66 @@
-<%= render 'track_form' if signed_in? %>
+<table>
+    <tr>
+      <td><b>Robot:</b></td>
+      <td><%= @robot.name %></td>
+    </tr>
 
-<p>
-  <b>Name:</b>
-  <%= @robot.name %>
-</p>
+    <tr>
+      <td><b>Model:</b></td>
+      <td><%= @robot.model %></td>
+    </tr>
 
-<p>
-  <b>Model:</b>
-  <%= @robot.model %>
-</p>
+    <tr>
+      <td><b>Description:</b></td>
+      <td><%= @robot.description %></td>
+    </tr>
 
-<p>
-  <b>Description:</b>
-  <%= @robot.description %>
-</p>
+    <tr>
+      <td><b>Hardware:</b></td>
+      <td><%= @robot.hardware %></td>
+    </tr>
 
-<p>
-  <b>Hardware:</b>
-  <%= @robot.hardware %>
-</p>
+    <tr>
+      <td><b>Software:</b></td>
+      <td><%= @robot.software %></td>
+    </tr>
 
-<p>
-  <b>Software:</b>
-  <%= @robot.software %>
-</p>
-
-<p>
-  <b>Applications:</b>
-  <%= @robot.applications %>
-</p>
-
-<%= link_to 'Edit', edit_robot_path(@robot) %> |
-<%= link_to 'Back', root_path %> <br />
-
-<br />
-<br />
-
-<p>Say something...</p>
-<%=render 'microposts/micropost_form'%>
+    <tr>
+      <td><b>Applications:</b></td>
+      <td><%= @robot.applications %></td>
+    </tr>
+    <% if current_user == @robot.user %>
+    <tr>
+      <td>
+        <p>
+          <%= link_to 'Edit', edit_robot_path(@robot) %> |
+          <%= link_to 'Back', root_path %>
+        </p>
+      </td>
+    </tr>
+    <% else %>
+      <tr>
+        <td>
+            <p>
+              <%= render 'track_form' if signed_in? %>
+            </p>
+        </td>
+    </tr>
+    <% end %>
+</table>
+<% if current_user == @robot.user %>
+  <table>
+   <tr>
+     <td><p>Make a new roblog entry...<p></td>
+   </tr>
+   <tr>
+     <td><%=render 'microposts/micropost_form'%></td>
+   </tr>
+  </table>
+<% end %>
 
 <% unless @robot.microposts.empty? %>
-        <table class="microposts" summary="Robot microposts">
-          <%= render @microposts %>
-        </table>
-        <%= will_paginate @microposts %>
+  <table class="microposts" summary="Robot microposts">
+     <%= render @microposts %>
+   </table>
+   <%= will_paginate @microposts %>
 <% end %>
