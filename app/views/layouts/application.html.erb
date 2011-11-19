@@ -10,17 +10,29 @@
   <%= csrf_meta_tag %>
 </head>
 <body>
-  <div class="container">
-   <table>
-     <tr>
-        <%= render 'layouts/header' %>
-     </tr>
-     <tr>
-       <section class="round">
-         <%= yield %>
-       </section>
-     </tr>
-   </table>
-  </div>
+<div class="container">
+  <table>
+    <tr>
+      <%= render 'layouts/header' %>
+    </tr>
+    <tr>
+      <% if user_signed_in? %>
+          Signed in as <%= current_user.email %>
+      <% else %>
+          Not a member? It's free to <%= link_to "sign up", new_user_registration_path %>!
+      <% end %>
+    </tr>
+    <tr>
+      <p class="notice"><%= notice %></p>
+
+      <p class="alert"><%= alert %></p>
+    </tr>
+    <tr>
+      <section class="round">
+        <%= yield %>
+      </section>
+    </tr>
+  </table>
+</div>
 </body>
 </html>
