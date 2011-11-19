@@ -1,6 +1,5 @@
 <header>
-<nav class="round">
-  <ul>
+<nav class = "ui-menu">
     <%= link_to "Home", root_path%>
     <%= link_to "Robots", robots_path%>
     <% if user_signed_in? %>
@@ -8,7 +7,6 @@
     <% else %>
       <%= link_to "Login", new_user_session_path %>
     <% end %>
-  </ul>
 </nav>
   <% if user_signed_in? %>
       Signed in as <%= current_user.email %>
