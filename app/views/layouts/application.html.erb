@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Robots</title>
+  <title>RoboTracker</title>
   <%= stylesheet_link_tag :all %>
   <%= javascript_include_tag :all %>
   <!--<link type="text/css" href="css/jquery-ui-1.8.16.custom.css" rel="Stylesheet" />-->
@@ -11,32 +11,19 @@
 </head>
 <body>
 <div class="container">
-  <table>
-    <tr>
-      <%= render 'layouts/header' %>
-    </tr>
-    <tr>
-      <% if user_signed_in? %>
-          Signed in as <%= current_user.email %>
-      <% else %>
-          Not a member? It's free to <%= link_to "sign up", new_user_registration_path %>!
-      <% end %>
-    </tr>
-    <tr>
-      <p class="notice"><%= notice %></p>
-
-      <p class="alert"><%= alert %></p>
-    </tr>
-    <tr>
-      <div class="container content main">
-          <div style="width:640px; margin:0 auto">
-            <%= yield %>
-        </div>
-      </div>
-    <tr>
-      <%= render 'layouts/footer' %>
-    </tr>
-  </table>
+  <%= render 'layouts/header' %>
+  <div class="content main">
+     <% if user_signed_in? %>
+      Signed in as <%= current_user.email %>
+  <% else %>
+      Not a member? It's free to <%= link_to "sign up", new_user_registration_path %>!
+  <% end %>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+    <br/>
+    <%= yield %>
+  </div>
+  <%= render 'layouts/footer' %>
 </div>
 </body>
 </html>
