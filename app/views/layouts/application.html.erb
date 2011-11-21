@@ -28,9 +28,13 @@
       <p class="alert"><%= alert %></p>
     </tr>
     <tr>
-      <section class="round">
-        <%= yield %>
-      </section>
+      <div class="container content main">
+          <div style="width:640px; margin:0 auto">
+            <%= yield %>
+        </div>
+      </div>
+    <tr>
+      <%= render 'layouts/footer' %>
     </tr>
   </table>
 </div>

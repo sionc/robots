@@ -1,11 +1,24 @@
-<header class = "topbar-inner">
-  <br/>
-    <%= link_to "Home", root_path %>
-    <%= link_to "Robots", robots_path %>
-    <% if user_signed_in? %>
-        <%= link_to "Logout", destroy_user_session_path, :method => :delete %>
-    <% else %>
-        <%= link_to "Login", new_user_session_path %>
-    <% end %>
-  <br/>
+<header>
+  <div class="topbar">
+    <div class="fill">
+      <div class="container">
+        <%= link_to "RoboTracker", root_path, :class => "brand" %>
+        <ul class="nav">
+          <li>
+            <%= link_to "Home", root_path %>
+          </li>
+          <li>
+            <%= link_to "Robots", robots_path %>
+          </li>
+          <li>
+            <% if user_signed_in? %>
+                <%= link_to "Logout", destroy_user_session_path, :method => :delete %>
+            <% else %>
+                <%= link_to "Login", new_user_session_path %>
+            <% end %>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
 </header>
